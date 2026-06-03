@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constitution of India — Study Resource</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --saffron: #FF9933;
+    --deep-saffron: #C47A1E;
+    --navy: #1A2B5E;
+    --navy-light: #2E4080;
+    --chakra-blue: #0057A8;
+    --green: #138808;
+    --cream: #FFF8F0;
+    --parchment: #F5EDD8;
+    --text: #1C1C1C;
+    --muted: #6B6B6B;
+    --gold: #C9A84C;
+    --gold-light: #F5D78A;
+    --white: #FFFFFF;
+    --border: rgba(26,43,94,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Tricolor top bar */
+  .tricolor-bar {
+    height: 6px;
+    background: linear-gradient(to right, var(--saffron) 33.3%, var(--white) 33.3%, var(--white) 66.6%, var(--green) 66.6%);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 6px; left: 0; right: 0; z-index: 99;
+    background: rgba(255,248,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-brand .chakra-icon {
+    width: 28px; height: 28px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+
+  /* Hero */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 120px 2rem 80px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg-pattern {
+    position: absolute; inset: 0; z-index: 0;
+    opacity: 0.035;
+    background-image: repeating-linear-gradient(45deg, var(--navy) 0, var(--navy) 1px, transparent 0, transparent 50%);
+    background-size: 30px 30px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--parchment);
+    border: 1px solid var(--gold);
+    color: var(--deep-saffron);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 2rem;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.12;
+    max-width: 820px;
+    margin-bottom: 1.5rem;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--deep-saffron);
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    position: relative; z-index: 1;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 8px;
+    text-decoration: none;
+  }
+  .btn-primary:hover { background: var(--navy-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+  /* Stats strip */
+  .stats-strip {
+    background: var(--navy);
+    color: var(--white);
+    padding: 2.5rem 2rem;
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 4rem;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* Features */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--deep-saffron);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-desc {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 580px;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .feature-card:hover { box-shadow: 0 8px 30px rgba(26,43,94,0.1); transform: translateY(-3px); }
+
+  .feature-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  .fi-saffron { background: #FFF0DC; }
+  .fi-blue { background: #E8F0FF; }
+  .fi-green { background: #E5F5E5; }
+  .fi-gold { background: #FFF8DC; }
+
+  .feature-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* Topics section */
+  .topics-section {
+    background: var(--parchment);
+    padding: 5rem 2rem;
+  }
+  .topics-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .topic-chip {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--navy);
+    cursor: default;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .topic-chip:hover { border-color: var(--saffron); background: #FFFAF4; }
+  .topic-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.78rem;
+    color: var(--gold);
+    min-width: 20px;
+  }
+
+  /* Download section */
+  .download-section {
+    padding: 5rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .download-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3.5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .download-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--saffron), var(--gold), var(--green));
+  }
+
+  .download-icon {
+    width: 70px; height: 70px;
+    background: var(--parchment);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+  }
+
+  .download-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+  }
+  .download-card > p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+
+  .email-form { display: flex; flex-direction: column; gap: 1rem; max-width: 440px; margin: 0 auto; }
+
+  .input-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+  .input-group label {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+  .input-group input {
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .input-group input:focus { border-color: var(--chakra-blue); background: var(--white); }
+
+  .format-selector {
+    display: flex; gap: 0.75rem;
+  }
+  .format-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--cream);
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .format-btn.active {
+    border-color: var(--navy);
+    background: var(--navy);
+    color: var(--white);
+  }
+  .format-btn:hover:not(.active) { border-color: var(--navy); color: var(--navy); }
+
+  .download-btn {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color: var(--white);
+    border: none;
+    padding: 15px 32px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin-top: 0.5rem;
+  }
+  .download-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .download-btn:active { transform: translateY(0); }
+  .download-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+  .privacy-note {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 1rem;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 200;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex; align-items: center; gap: 10px;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.error { background: #C0392B; }
+
+  /* Footer */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  footer a { color: var(--gold-light); text-decoration: none; }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Chakra SVG */
+  .chakra-spin { animation: spin 20s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* Modal overlay */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 300;
+    background: rgba(26,43,94,0.6);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    max-width: 420px; width: 90%;
+    text-align: center;
+    transform: scale(0.92);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.open .modal { transform: scale(1); }
+  .modal-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 0.75rem; }
+  .modal p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
+  .modal-email { font-weight: 500; color: var(--navy); font-size: 1rem; }
+  .modal-close {
+    background: var(--navy); color: var(--white);
+    border: none; border-radius: 8px;
+    padding: 12px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; width: 100%;
+    transition: background 0.2s;
+  }
+  .modal-close:hover { background: var(--navy-light); }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .download-card { padding: 2.5rem 1.5rem; }
+    .stats-strip { gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="tricolor-bar"></div>
+
+<nav>
+  <div class="nav-brand">
+    <svg class="chakra-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="14" r="13" stroke="#0057A8" stroke-width="1.5"/>
+      <circle cx="14" cy="14" r="3.5" stroke="#0057A8" stroke-width="1.2"/>
+      <g class="chakra-spin" style="transform-origin:14px 14px">
+        <line x1="14" y1="1.5" x2="14" y2="4.5" stroke="#0057A8" stroke-width="1.2"/>
+        <line x1="14" y1="23.5" x2="14" y2="26.5" stroke="#0057A8" stroke-width="1.2"/>
+        <line x1="1.5" y1="14" x2="4.5" y2="14" stroke="#0057A8" stroke-width="1.2"/>
+        <line x1="23.5" y1="14" x2="26.5" y2="14" stroke="#0057A8" stroke-width="1.2"/>
+        <line x1="4.929" y1="4.929" x2="7.05" y2="7.05" stroke="#0057A8" stroke-width="1.2"/>
+        <line x1="20.95" y1="20.95" x2="23.07" y2="23.07" stroke="#0057A8" stroke-width="1.2"/>
+        <line x1="23.07" y1="4.929" x2="20.95" y2="7.05" stroke="#0057A8" stroke-width="1.2"/>
+        <line x1="7.05" y1="20.95" x2="4.929" y2="23.07" stroke="#0057A8" stroke-width="1.2"/>
+        <line x1="14" y1="1.5" x2="14.5" y2="4" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="20.5" y1="3.2" x2="19.5" y2="5.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="25.8" y1="9" x2="23.5" y2="10" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="26.5" y1="16" x2="24" y2="16" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="24.8" y1="22" x2="22.5" y2="21" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="20" y1="25.5" x2="19" y2="23.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="14" y1="26.5" x2="14" y2="24" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="8" y1="25.5" x2="9" y2="23.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="3.2" y1="22" x2="5.5" y2="21" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="1.5" y1="16" x2="4" y2="16" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="2.2" y1="9" x2="4.5" y2="10" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        <line x1="7.5" y1="3.2" x2="8.5" y2="5.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+      </g>
+    </svg>
+    Samvidhan Study
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#topics">Topics</a></li>
+    <li><a href="#download">Download</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <span class="hero-badge">🇮🇳 &nbsp; Since 26 January 1950</span>
+  <h1>Study the <em>Constitution</em> of India — Free & Complete</h1>
+  <p class="hero-sub">The supreme law of the land, made accessible. Download the full Constitution as a PDF or ePub — sent directly to your inbox, ready to study anywhere.</p>
+  <div class="hero-cta">
+    <a href="#download" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Get Free Copy
+    </a>
+    <a href="#topics" class="btn-outline">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      Explore Topics
+    </a>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-strip">
+  <div class="stat"><span class="stat-num">448</span><span class="stat-label">Articles</span></div>
+  <div class="stat"><span class="stat-num">12</span><span class="stat-label">Schedules</span></div>
+  <div class="stat"><span class="stat-num">25</span><span class="stat-label">Parts</span></div>
+  <div class="stat"><span class="stat-num">106</span><span class="stat-label">Amendments</span></div>
+</div>
+
+<!-- Features -->
+<section class="section reveal" id="features">
+  <div class="section-tag">Why study with us</div>
+  <h2 class="section-title">Everything you need to understand India's supreme law</h2>
+  <p class="section-desc">Whether you're preparing for exams, legal studies, or simply an informed citizen — our resource covers it all.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon fi-saffron">📜</div>
+      <h3>Full Original Text</h3>
+      <p>Complete Constitution with all 448 articles, 12 schedules, and all 106 amendments incorporated as of date.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-blue">🏛️</div>
+      <h3>Annotated Sections</h3>
+      <p>Key landmark Supreme Court judgments referenced alongside relevant articles for contextual understanding.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-green">📚</div>
+      <h3>Study Notes Included</h3>
+      <p>Curated summaries for each Part, ideal for UPSC, law entrance exams, and general civic knowledge.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon fi-gold">✉️</div>
+      <h3>Delivered to Inbox</h3>
+      <p>Enter your email and receive the document instantly — no account needed, no sign-up hassle.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Topics -->
+<section class="topics-section" id="topics">
+  <div class="topics-inner reveal">
+    <div class="section-tag">What's covered</div>
+    <h2 class="section-title">All major constitutional topics</h2>
+    <div class="topics-grid">
+      <div class="topic-chip"><span class="topic-num">I</span>Union & Territory</div>
+      <div class="topic-chip"><span class="topic-num">II</span>Citizenship</div>
+      <div class="topic-chip"><span class="topic-num">III</span>Fundamental Rights</div>
+      <div class="topic-chip"><span class="topic-num">IV</span>DPSP</div>
+      <div class="topic-chip"><span class="topic-num">IVA</span>Fundamental Duties</div>
+      <div class="topic-chip"><span class="topic-num">V</span>The Union</div>
+      <div class="topic-chip"><span class="topic-num">VI</span>The States</div>
+      <div class="topic-chip"><span class="topic-num">VIII</span>UTs</div>
+      <div class="topic-chip"><span class="topic-num">IX</span>Panchayats</div>
+      <div class="topic-chip"><span class="topic-num">IXA</span>Municipalities</div>
+      <div class="topic-chip"><span class="topic-num">X</span>Scheduled Areas</div>
+      <div class="topic-chip"><span class="topic-num">XI</span>Relations Centre–State</div>
+      <div class="topic-chip"><span class="topic-num">XII</span>Finance</div>
+      <div class="topic-chip"><span class="topic-num">XIII</span>Trade & Commerce</div>
+      <div class="topic-chip"><span class="topic-num">XIV</span>Services</div>
+      <div class="topic-chip"><span class="topic-num">XV</span>Elections</div>
+      <div class="topic-chip"><span class="topic-num">XVI</span>Special Provisions</div>
+      <div class="topic-chip"><span class="topic-num">XVII</span>Official Language</div>
+      <div class="topic-chip"><span class="topic-num">XVIII</span>Emergency Provisions</div>
+      <div class="topic-chip"><span class="topic-num">XIX</span>Miscellaneous</div>
+      <div class="topic-chip"><span class="topic-num">XX</span>Amendment Procedure</div>
+      <div class="topic-chip"><span class="topic-num">XXI</span>Temp. Provisions</div>
+      <div class="topic-chip"><span class="topic-num">XXII</span>Short Title</div>
+      <div class="topic-chip"><span class="topic-num">Sch.</span>All 12 Schedules</div>
+    </div>
+  </div>
+</section>
+
+<!-- Download -->
+<section class="download-section reveal" id="download">
+  <div class="download-card">
+    <div class="download-icon">📩</div>
+    <h2>Get Your Free Copy</h2>
+    <p>Enter your name and email address below. Choose your preferred format and click Download — we'll send it straight to your inbox.</p>
+
+    <div class="email-form" id="emailForm">
+      <div class="input-group">
+        <label for="nameInput">Your Name</label>
+        <input type="text" id="nameInput" placeholder="e.g. Arjun Sharma" autocomplete="name" />
+      </div>
+      <div class="input-group">
+        <label for="emailInput">Email Address</label>
+        <input type="email" id="emailInput" placeholder="you@example.com" autocomplete="email" />
+      </div>
+      <div class="input-group">
+        <label>Preferred Format</label>
+        <div class="format-selector">
+          <button class="format-btn active" id="fmtPdf" onclick="selectFormat('PDF')">📄 PDF</button>
+          <button class="format-btn" id="fmtEpub" onclick="selectFormat('ePub')">📖 ePub</button>
+          <button class="format-btn" id="fmtBoth" onclick="selectFormat('Both')">📦 Both</button>
+        </div>
+      </div>
+      <button class="download-btn" id="downloadBtn" onclick="handleDownload()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Send to My Email
+      </button>
+      <p class="privacy-note">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        We respect your privacy. No spam, no sharing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Samvidhan Study &nbsp;·&nbsp; A free educational resource for every Indian citizen</p>
+  <p style="margin-top:6px;">Constitution of India © Government of India &nbsp;·&nbsp; <a href="https://legislative.gov.in" target="_blank">legislative.gov.in</a></p>
+  <p style="margin-top:8px; color:rgba(255,255,255,0.3); font-size:0.75rem;">Satyameva Jayate — Truth alone triumphs</p>
+</footer>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h3>Check Your Inbox!</h3>
+    <p>We've sent the <strong>Constitution of India</strong> to</p>
+    <p class="modal-email" id="modalEmail">—</p>
+    <p style="margin-top:0.75rem;">Allow a few minutes for delivery. Check your spam folder if it doesn't arrive.</p>
+    <button class="modal-close" onclick="closeModal(null)">Done</button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+  let selectedFormat = 'PDF';
+
+  function selectFormat(fmt) {
+    selectedFormat = fmt;
+    document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
+    const map = { PDF: 'fmtPdf', ePub: 'fmtEpub', Both: 'fmtBoth' };
+    document.getElementById(map[fmt]).classList.add('active');
+  }
+
+  function showToast(msg, isError) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast' + (isError ? ' error' : '');
+    setTimeout(() => t.classList.add('show'), 10);
+    setTimeout(() => t.classList.remove('show'), 3800);
+  }
+
+  function handleDownload() {
+    const name = document.getElementById('nameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+
+    if (!name) { showToast('Please enter your name', true); return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showToast('Please enter a valid email address', true); return;
+    }
+
+    const btn = document.getElementById('downloadBtn');
+    btn.disabled = true;
+    btn.innerHTML = `
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 0.8s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+      Sending…`;
+
+    // Simulate email send (replace with real backend call)
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Send to My Email`;
+      document.getElementById('modalEmail').textContent = email;
+      document.getElementById('modalOverlay').classList.add('open');
+    }, 1800);
+  }
+
+  function closeModal(e) {
+    if (e && e.target !== document.getElementById('modalOverlay') && e.type === 'click') return;
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Enter key support
+  document.getElementById('emailInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') handleDownload();
+  });
+</script>
+</body>
+</html>
