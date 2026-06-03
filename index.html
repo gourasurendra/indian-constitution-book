@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Constitution of India — Study Resource</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -52,9 +52,36 @@
     display: flex; align-items: center; justify-content: space-between;
     height: 60px;
   }
+  
+  /* Flex containers for perfect 3-column centering */
+  .nav-left, .nav-right { flex: 1; }
+  .nav-center { flex: 0 0 auto; display: flex; justify-content: center; }
+  
+  .nav-left { display: flex; justify-content: flex-start; align-items: center; }
+  .nav-right { display: flex; justify-content: flex-end; align-items: center; }
+
+  .company-name {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .company-name::before {
+    content: '';
+    display: inline-block;
+    width: 12px; height: 12px;
+    background: var(--deep-saffron);
+    border-radius: 2px;
+  }
+
   .nav-brand {
     font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--navy);
     display: flex; align-items: center; gap: 10px;
@@ -96,7 +123,7 @@
     border: 1px solid var(--gold);
     color: var(--deep-saffron);
     font-size: 0.78rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 6px 16px;
@@ -128,7 +155,7 @@
     max-width: 560px;
     line-height: 1.7;
     margin-bottom: 3rem;
-    font-weight: 300;
+    font-weight: 400;
     position: relative; z-index: 1;
     animation: fadeUp 0.6s 0.2s ease both;
   }
@@ -202,7 +229,7 @@
   }
   .section-tag {
     font-size: 0.75rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--deep-saffron);
@@ -221,7 +248,7 @@
     font-size: 1rem;
     line-height: 1.7;
     max-width: 580px;
-    font-weight: 300;
+    font-weight: 400;
     margin-bottom: 3rem;
   }
 
@@ -262,7 +289,7 @@
     font-size: 0.9rem;
     color: var(--muted);
     line-height: 1.65;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   /* Topics section */
@@ -342,7 +369,7 @@
   .download-card > p {
     color: var(--muted);
     font-size: 0.95rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.6;
     margin-bottom: 2.5rem;
   }
@@ -352,7 +379,7 @@
   .input-group { display: flex; flex-direction: column; gap: 6px; text-align: left; }
   .input-group label {
     font-size: 0.82rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--navy);
     letter-spacing: 0.02em;
   }
@@ -382,7 +409,7 @@
     color: var(--muted);
     font-family: 'DM Sans', sans-serif;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
   }
@@ -407,6 +434,7 @@
     width: 100%;
     display: flex; align-items: center; justify-content: center; gap: 10px;
     margin-top: 0.5rem;
+    text-decoration: none;
   }
   .download-btn:hover { opacity: 0.9; transform: translateY(-1px); }
   .download-btn:active { transform: translateY(0); }
@@ -448,6 +476,7 @@
     line-height: 1.7;
   }
   footer a { color: var(--gold-light); text-decoration: none; }
+  footer bold { color: var(--white); font-weight: 600; font-size: 0.9rem; }
 
   /* Animations */
   @keyframes fadeUp {
@@ -492,20 +521,36 @@
   .modal-icon { font-size: 3rem; margin-bottom: 1rem; }
   .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 0.75rem; }
   .modal p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.5rem; }
-  .modal-email { font-weight: 500; color: var(--navy); font-size: 1rem; }
+  .modal-email { font-weight: 600; color: var(--navy); font-size: 1rem; }
   .modal-close {
     background: var(--navy); color: var(--white);
     border: none; border-radius: 8px;
     padding: 12px 28px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem; font-weight: 500;
+    font-size: 0.9rem; font-weight: 600;
     cursor: pointer; width: 100%;
     transition: background 0.2s;
   }
   .modal-close:hover { background: var(--navy-light); }
 
+  /* Responsive styling for navigation */
+  @media (max-width: 850px) {
+    .nav-brand { font-size: 1rem; }
+    .company-name { font-size: 0.95rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.8rem; }
+  }
+
   @media (max-width: 640px) {
-    .nav-links { display: none; }
+    .nav-right { display: none; } /* Hide links on mobile */
+    .nav-center { flex: 1; justify-content: flex-end; } /* Push Title right */
+    
+    .company-name { font-size: 0.9rem; letter-spacing: 0; }
+    .company-name::before { width: 8px; height: 8px; }
+    
+    .nav-brand { font-size: 0.9rem; gap: 6px; }
+    .nav-brand .chakra-icon { width: 22px; height: 22px; }
+    
     .download-card { padding: 2.5rem 1.5rem; }
     .stats-strip { gap: 2rem; }
   }
@@ -516,40 +561,49 @@
 <div class="tricolor-bar"></div>
 
 <nav>
-  <div class="nav-brand">
-    <svg class="chakra-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="14" cy="14" r="13" stroke="#0057A8" stroke-width="1.5"/>
-      <circle cx="14" cy="14" r="3.5" stroke="#0057A8" stroke-width="1.2"/>
-      <g class="chakra-spin" style="transform-origin:14px 14px">
-        <line x1="14" y1="1.5" x2="14" y2="4.5" stroke="#0057A8" stroke-width="1.2"/>
-        <line x1="14" y1="23.5" x2="14" y2="26.5" stroke="#0057A8" stroke-width="1.2"/>
-        <line x1="1.5" y1="14" x2="4.5" y2="14" stroke="#0057A8" stroke-width="1.2"/>
-        <line x1="23.5" y1="14" x2="26.5" y2="14" stroke="#0057A8" stroke-width="1.2"/>
-        <line x1="4.929" y1="4.929" x2="7.05" y2="7.05" stroke="#0057A8" stroke-width="1.2"/>
-        <line x1="20.95" y1="20.95" x2="23.07" y2="23.07" stroke="#0057A8" stroke-width="1.2"/>
-        <line x1="23.07" y1="4.929" x2="20.95" y2="7.05" stroke="#0057A8" stroke-width="1.2"/>
-        <line x1="7.05" y1="20.95" x2="4.929" y2="23.07" stroke="#0057A8" stroke-width="1.2"/>
-        <line x1="14" y1="1.5" x2="14.5" y2="4" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="20.5" y1="3.2" x2="19.5" y2="5.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="25.8" y1="9" x2="23.5" y2="10" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="26.5" y1="16" x2="24" y2="16" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="24.8" y1="22" x2="22.5" y2="21" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="20" y1="25.5" x2="19" y2="23.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="14" y1="26.5" x2="14" y2="24" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="8" y1="25.5" x2="9" y2="23.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="3.2" y1="22" x2="5.5" y2="21" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="1.5" y1="16" x2="4" y2="16" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="2.2" y1="9" x2="4.5" y2="10" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-        <line x1="7.5" y1="3.2" x2="8.5" y2="5.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
-      </g>
-    </svg>
-    Samvidhan Study
+  <div class="nav-left">
+    <div class="company-name">The Surendra Co.</div>
   </div>
-  <ul class="nav-links">
-    <li><a href="#features">Features</a></li>
-    <li><a href="#topics">Topics</a></li>
-    <li><a href="#download">Download</a></li>
-  </ul>
+  
+  <div class="nav-center">
+    <div class="nav-brand">
+      <svg class="chakra-icon" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14" cy="14" r="13" stroke="#0057A8" stroke-width="1.5"/>
+        <circle cx="14" cy="14" r="3.5" stroke="#0057A8" stroke-width="1.2"/>
+        <g class="chakra-spin" style="transform-origin:14px 14px">
+          <line x1="14" y1="1.5" x2="14" y2="4.5" stroke="#0057A8" stroke-width="1.2"/>
+          <line x1="14" y1="23.5" x2="14" y2="26.5" stroke="#0057A8" stroke-width="1.2"/>
+          <line x1="1.5" y1="14" x2="4.5" y2="14" stroke="#0057A8" stroke-width="1.2"/>
+          <line x1="23.5" y1="14" x2="26.5" y2="14" stroke="#0057A8" stroke-width="1.2"/>
+          <line x1="4.929" y1="4.929" x2="7.05" y2="7.05" stroke="#0057A8" stroke-width="1.2"/>
+          <line x1="20.95" y1="20.95" x2="23.07" y2="23.07" stroke="#0057A8" stroke-width="1.2"/>
+          <line x1="23.07" y1="4.929" x2="20.95" y2="7.05" stroke="#0057A8" stroke-width="1.2"/>
+          <line x1="7.05" y1="20.95" x2="4.929" y2="23.07" stroke="#0057A8" stroke-width="1.2"/>
+          <line x1="14" y1="1.5" x2="14.5" y2="4" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="20.5" y1="3.2" x2="19.5" y2="5.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="25.8" y1="9" x2="23.5" y2="10" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="26.5" y1="16" x2="24" y2="16" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="24.8" y1="22" x2="22.5" y2="21" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="20" y1="25.5" x2="19" y2="23.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="14" y1="26.5" x2="14" y2="24" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="8" y1="25.5" x2="9" y2="23.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="3.2" y1="22" x2="5.5" y2="21" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="1.5" y1="16" x2="4" y2="16" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="2.2" y1="9" x2="4.5" y2="10" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+          <line x1="7.5" y1="3.2" x2="8.5" y2="5.5" stroke="#0057A8" stroke-width="0.8" opacity="0.5"/>
+        </g>
+      </svg>
+      The Constitution of India
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#download">Download</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- Hero -->
@@ -654,10 +708,6 @@
         <input type="text" id="nameInput" placeholder="e.g. Arjun Sharma" autocomplete="name" />
       </div>
       <div class="input-group">
-        <label for="emailInput">Email Address</label>
-        <input type="email" id="emailInput" placeholder="you@example.com" autocomplete="email" />
-      </div>
-      <div class="input-group">
         <label>Preferred Format</label>
         <div class="format-selector">
           <button class="format-btn active" id="fmtPdf" onclick="selectFormat('PDF')">📄 PDF</button>
@@ -666,17 +716,16 @@
         </div>
       </div>
 
+      <a href="https://drive.google.com/uc?export=download&id=17lkV0Jwi2nzrvW0G11WiHMqk0tREZT5t" 
+         class="download-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Now
+      </a>
 
-     
-      <button class="download-btn" id="downloadBtn" onclick="handleDownload()">
-       <a href="https://drive.google.com/uc?export=download&id=17lkV0Jwi2nzrvW0G11WiHMqk0tREZT5t" 
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Send to My Email
-            </a>
-      </button>
-
-
-     
       <p class="privacy-note">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         We respect your privacy. No spam, no sharing.
@@ -686,7 +735,7 @@
 </section>
 
 <footer>
-  <p>Samvidhan Study &nbsp;·&nbsp; A free educational resource for every Indian citizen</p>
+  <p><bold>The Surendra Co.</bold> &nbsp;·&nbsp; A free educational resource for every Indian citizen</p>
   <p style="margin-top:6px;">Constitution of India © Government of India &nbsp;·&nbsp; <a href="https://legislative.gov.in" target="_blank">legislative.gov.in</a></p>
   <p style="margin-top:8px; color:rgba(255,255,255,0.3); font-size:0.75rem;">Satyameva Jayate — Truth alone triumphs</p>
 </footer>
@@ -726,26 +775,32 @@
 
   function handleDownload() {
     const name = document.getElementById('nameInput').value.trim();
-    const email = document.getElementById('emailInput').value.trim();
+    // Assuming emailInput logic was previously present, adding simple catch here if reused
+    const email = document.getElementById('emailInput')?.value.trim();
 
     if (!name) { showToast('Please enter your name', true); return; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       showToast('Please enter a valid email address', true); return;
     }
 
-    const btn = document.getElementById('downloadBtn');
-    btn.disabled = true;
+    const btn = document.querySelector('.download-btn');
+    btn.style.pointerEvents = 'none';
+    btn.style.opacity = '0.6';
     btn.innerHTML = `
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 0.8s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
-      Sending…`;
+      Starting Download…`;
 
-    // Simulate email send (replace with real backend call)
     setTimeout(() => {
-      btn.disabled = false;
-      btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Send to My Email`;
-      document.getElementById('modalEmail').textContent = email;
-      document.getElementById('modalOverlay').classList.add('open');
-    }, 1800);
+      btn.style.pointerEvents = 'all';
+      btn.style.opacity = '1';
+      btn.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg> Download Now`;
+    }, 2500);
   }
 
   function closeModal(e) {
@@ -758,11 +813,6 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Enter key support
-  document.getElementById('emailInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') handleDownload();
-  });
 </script>
 </body>
 </html>
